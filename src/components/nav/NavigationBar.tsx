@@ -1,0 +1,218 @@
+import { useState } from "react";
+import menuBtn from "../../assets/menu_light.png";
+import netflixLogo from "../../assets/netflix_nobg.png";
+
+const HorizontalSecondaryContent = () => {
+  return [
+    "Home",
+    "My List",
+    "Thrillers",
+    "Kids & Family",
+    "Filipino Movies & TV",
+    "Reality TV",
+    "Action",
+    "Anime",
+    "Comedies",
+    "Fantasy",
+    "Sci-fi",
+    "Horror",
+    "K-Dramas",
+    "Stand-Up Comedy",
+    "Documentaries",
+    "Hollywood Movies",
+    "Music & Musicals",
+    "Romance",
+    "Dramas",
+  ];
+};
+
+const HorizontalContent = () => {
+  return [
+    "Home",
+    "TV Shows",
+    "Movies",
+    "New & Popular",
+    "My List",
+    "Browse by Languages",
+  ];
+};
+
+const VerticalMainContent = () => {
+  return ["Help Center", "Sign Out of Netflix"];
+};
+
+function NavigationBar() {
+  const [showMenu, setShowMenu] = useState(true);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const [showSearch, setShowSearch] = useState(true);
+
+  const toggleShowSearch = () => {
+    setShowSearch(!showSearch);
+  };
+
+  return (
+    <>
+      <nav>
+        <div className="bg-black pt-2 px-14 h-20  items-center hidden lg:flex">
+          <div>
+            <a href="#">
+              <img src={netflixLogo} className="h-12" />
+            </a>
+          </div>
+          <div className="flex gap-5 px-5">
+            {HorizontalContent().map((content, index) => (
+              <div
+                key={index}
+                className="text-white text-sm hover:text-gray-300 ease-out duration-300"
+              >
+                <a href="#">{content}</a>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center ml-auto gap-5">
+            <div className="text-white text-sm cursor-pointer ">
+              <table className="table">
+                <tr>
+                  <td
+                    className={`${
+                      !showSearch ? "block" : "hidden"
+                    } px-3 relative border`}
+                  >
+                    <input
+                      type="search"
+                      placeholder="Titles, people, genres"
+                      className={`h-7 w-64 px-7 py-5 bg-black text-white focus:outline-none`}
+                    />
+                    <div
+                      className={`${
+                        !showSearch ? "absolute" : "hidden"
+                      }  inset-y-0 start-0 p-2 text-white text-xl`}
+                    >
+                      <i
+                        className="bi bi-search"
+                        onClick={toggleShowSearch}
+                      ></i>
+                    </div>
+                  </td>
+                  <td>
+                    <i
+                      className={`${
+                        showSearch ? "block" : "hidden"
+                      } bi bi-search text-white text-xl`}
+                      onClick={toggleShowSearch}
+                    ></i>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div className="text-white text-sm">
+              <a>Kids</a>
+            </div>
+            <div className="text-white text-sm">
+              <a>
+                <i className="bi bi-bell text-white text-xl"></i>
+              </a>
+            </div>
+            {/* 
+                  To create a animation effect on hover using a table tag, we can use the following classes:
+                  1. flex [&>*:nth-child(even)]:hover:rotate-180
+                  2. flex [&>*:nth-child(even)]:ease-in
+                  3. flex [&>*:nth-child(even)]:duration-300
+                  
+                  This will select all the even children of the table row and apply the animation effect on hover.
+                  Also called as arbitrary child selector.
+                  
+                  */}
+            <div className="flex items-center gap-2">
+              <table className=" table-auto w-full">
+                <tbody>
+                  <tr className="flex [&>*:nth-child(even)]:hover:rotate-180 [&>*:nth-child(even)]:ease-in [&>*:nth-child(even)]:duration-200 gap-1">
+                    <td className="flex items-center gap-2">
+                      <a>
+                        <i
+                          className={`bi bi-person-circle text-3xl text-white`}
+                        ></i>
+                      </a>
+                    </td>
+                    <td className="flex items-center gap-2">
+                      <a>
+                        <i className={`bi bi-caret-down-fill text-white`}></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        {/* Smaller size navigation bar starts here */}
+        <div className=" block lg:hidden">
+          <div className="bg-black pt-2 px-5">
+            <ul className="flex h-20 justify-between items-center">
+              <li>
+                <img src={menuBtn} className="h-7" onClick={toggleMenu} />
+              </li>
+              <li>
+                <a href="#">
+                  <img src={netflixLogo} className="h-12" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <input
+                    type="search"
+                    placeholder="Search"
+                    className="h-7 w-28 p-3 "
+                    style={{ background: "#191919" }}
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className={`${
+              !showMenu ? "block" : "hidden"
+            } bg-black w-64 px-5 font-bold`}
+            style={{ height: "100dvh" }}
+          >
+            <div className="flex gap-2" style={{ color: "#808080" }}>
+              <div>
+                <i className={`bi bi-person-circle text-3xl text-white`}></i>
+              </div>
+              <div className="items-center">
+                <p className="m-0 p-0 flex text-md">Rafael Martinez</p>
+                <small className="m-0 p-0 flex text-xs font-normal">Switch Profiles</small>
+              </div>
+            </div>
+
+            {VerticalMainContent().map((content, index) => (
+              <div
+                key={index}
+                className="text-white pt-1 focus:text-white"
+                style={{ color: "#808080" }}
+              >
+                <a>{content}</a>
+              </div>
+            ))}
+            <hr className="mt-5" style={{ color: "#808080" }} />
+            {HorizontalSecondaryContent().map((content, index) => (
+              <div
+                key={index}
+                className="text-white py-1"
+                style={{ color: "#808080" }}
+              >
+                {content}
+              </div>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+}
+
+export default NavigationBar;

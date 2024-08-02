@@ -1,0 +1,23 @@
+@keyframes search-in {
+    from {
+        transform: translateX(100%)
+    } to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes search-out {
+    from {
+        transform: translateX(0);
+    } to {
+        transform: translateX(100%);
+    }
+}
+
+.search-in {
+    animation: search-in 0.5s forwards;
+}
+
+.search-out {
+    animation: search-out 0.5s forwards;
+}

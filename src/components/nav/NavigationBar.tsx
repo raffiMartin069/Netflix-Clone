@@ -1,6 +1,8 @@
 import { useState } from "react";
 import menuBtn from "../../assets/menu_light.png";
 import netflixLogo from "../../assets/netflix_nobg.png";
+import '../../styles/sidenav-animation.css';
+import '../../styles/search-animation.css'
 
 const HorizontalSecondaryContent = () => {
   return [
@@ -42,17 +44,12 @@ const VerticalMainContent = () => {
 };
 
 function NavigationBar() {
-  const [showMenu, setShowMenu] = useState(true);
+  const [toggle, setToggle] = useState(true);
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
+  const changeState = () => {
+    setToggle(!toggle);
   };
 
-  const [showSearch, setShowSearch] = useState(true);
-
-  const toggleShowSearch = () => {
-    setShowSearch(!showSearch);
-  };
 
   return (
     <>
@@ -79,7 +76,7 @@ function NavigationBar() {
                 <tr>
                   <td
                     className={`${
-                      !showSearch ? "block" : "hidden"
+                      !toggle ? "block" : "hidden"
                     } px-3 relative border`}
                   >
                     <input
@@ -87,23 +84,28 @@ function NavigationBar() {
                       placeholder="Titles, people, genres"
                       className={`h-7 w-64 px-7 py-5 bg-black text-white focus:outline-none`}
                     />
+                    {
+                      /**
+                       * TODO: Add a search icon to the input field
+                       *  */ 
+                    }
                     <div
                       className={`${
-                        !showSearch ? "absolute" : "hidden"
+                        !toggle ? "absolute" : "hidden"
                       }  inset-y-0 start-0 p-2 text-white text-xl`}
                     >
                       <i
                         className="bi bi-search"
-                        onClick={toggleShowSearch}
+                        onClick={changeState}
                       ></i>
                     </div>
                   </td>
                   <td>
                     <i
                       className={`${
-                        showSearch ? "block" : "hidden"
+                        toggle ? "block" : "hidden"
                       } bi bi-search text-white text-xl`}
-                      onClick={toggleShowSearch}
+                      onClick={changeState}
                     ></i>
                   </td>
                 </tr>
@@ -154,7 +156,7 @@ function NavigationBar() {
           <div className="bg-black pt-2 px-5">
             <ul className="flex h-20 justify-between items-center">
               <li>
-                <img src={menuBtn} className="h-7" onClick={toggleMenu} />
+                <img src={menuBtn} className="h-7" onClick={changeState} />
               </li>
               <li>
                 <a href="#">
@@ -175,7 +177,7 @@ function NavigationBar() {
           </div>
           <div
             className={`${
-              !showMenu ? "block" : "hidden"
+              !toggle ? "slide-in" : "slide-out"
             } bg-black w-64 px-5 font-bold`}
             style={{ height: "100dvh" }}
           >
@@ -188,7 +190,6 @@ function NavigationBar() {
                 <small className="m-0 p-0 flex text-xs font-normal">Switch Profiles</small>
               </div>
             </div>
-
             {VerticalMainContent().map((content, index) => (
               <div
                 key={index}

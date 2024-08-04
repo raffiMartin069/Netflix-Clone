@@ -4,7 +4,7 @@ import netflixLogo from "../../assets/netflix_nobg.png";
 import "../../styles/sidenav-animation.css";
 import "../../styles/search-animation.css";
 
-const HorizontalSecondaryContent = () => {
+const VerticalSecondaryContent = () => {
   return [
     "Home",
     "My List",
@@ -176,10 +176,10 @@ function NavigationBar() {
           <div
             className={`${
               !toggle ? "slide-in" : "slide-out"
-            } bg-black w-64 px-5 font-bold`}
+            } bg-black w-64 font-bold`}
             style={{ height: "100dvh" }}
           >
-            <div className="flex gap-2" style={{ color: "#808080" }}>
+            <div className="flex gap-2 px-5" style={{ color: "#808080" }}>
               <div>
                 <i className={`bi bi-person-circle text-3xl text-white`}></i>
               </div>
@@ -195,15 +195,26 @@ function NavigationBar() {
                 key={index}
                 className={`${
                   hoverText === index ? "text-white" : "text-gray-500"
-                } pt-1`}
+                } pt-1 flex`}
               >
-                <p onClick={() => handleTextHover(index)}>{content}</p>
+                <div className={`${
+                  hoverText === index ? "bg-red-600 h-auto w-1" : "invisible w-1"
+                }`}></div>
+                <p className="px-5" onClick={() => handleTextHover(index)}>{content}</p>
               </div>
             ))}
             <hr className="mt-5 text-gray-500" />
-            {HorizontalSecondaryContent().map((content, index) => (
-              <div key={index} className="py-1 text-gray-500">
-                {content}
+            {VerticalSecondaryContent().map((content, index) => (
+              <div
+                key={index}
+                className={`${
+                  hoverText === index ? "text-white" : "text-gray-500"
+                } pt-1 flex`}
+              >
+                <div className={`${
+                  hoverText === index ? "bg-red-600 h-auto w-1" : "invisible w-1"
+                }`}></div>
+                <p className="px-5" onClick={() => handleTextHover(index)}>{content}</p>
               </div>
             ))}
           </div>

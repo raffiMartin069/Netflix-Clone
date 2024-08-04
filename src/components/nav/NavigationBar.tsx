@@ -1,8 +1,8 @@
 import { useState } from "react";
 import menuBtn from "../../assets/menu_light.png";
 import netflixLogo from "../../assets/netflix_nobg.png";
-import '../../styles/sidenav-animation.css';
-import '../../styles/search-animation.css'
+import "../../styles/sidenav-animation.css";
+import "../../styles/search-animation.css";
 
 const HorizontalSecondaryContent = () => {
   return [
@@ -45,11 +45,15 @@ const VerticalMainContent = () => {
 
 function NavigationBar() {
   const [toggle, setToggle] = useState(true);
+  const [hoverText, setHoverText] = useState<number | null>(null);
 
   const changeState = () => {
     setToggle(!toggle);
   };
 
+  const handleTextHover = (index: number) => {
+    setHoverText(index);
+  };
 
   return (
     <>
@@ -76,28 +80,22 @@ function NavigationBar() {
                 <tr>
                   <td
                     className={`${
-                      !toggle ? "block" : "hidden"
+                      !toggle ? "search-in block" : "search-out hidden"
                     } px-3 relative border`}
                   >
                     <input
                       type="search"
                       placeholder="Titles, people, genres"
-                      className={`h-7 w-64 px-7 py-5 bg-black text-white focus:outline-none`}
+                      className={`${
+                        toggle ? "search-out" : "search-in"
+                      } h-7 px-7 py-5 bg-black text-white focus:outline-none`}
                     />
-                    {
-                      /**
-                       * TODO: Add a search icon to the input field
-                       *  */ 
-                    }
                     <div
                       className={`${
                         !toggle ? "absolute" : "hidden"
                       }  inset-y-0 start-0 p-2 text-white text-xl`}
                     >
-                      <i
-                        className="bi bi-search"
-                        onClick={changeState}
-                      ></i>
+                      <i className="bi bi-search" onClick={changeState}></i>
                     </div>
                   </td>
                   <td>
@@ -187,25 +185,24 @@ function NavigationBar() {
               </div>
               <div className="items-center">
                 <p className="m-0 p-0 flex text-md">Rafael Martinez</p>
-                <small className="m-0 p-0 flex text-xs font-normal">Switch Profiles</small>
+                <small className="m-0 p-0 flex text-xs font-normal">
+                  Switch Profiles
+                </small>
               </div>
             </div>
             {VerticalMainContent().map((content, index) => (
               <div
                 key={index}
-                className="text-white pt-1 focus:text-white"
-                style={{ color: "#808080" }}
+                className={`${
+                  hoverText === index ? "text-white" : "text-gray-500"
+                } pt-1`}
               >
-                <a>{content}</a>
+                <p onClick={() => handleTextHover(index)}>{content}</p>
               </div>
             ))}
-            <hr className="mt-5" style={{ color: "#808080" }} />
+            <hr className="mt-5 text-gray-500" />
             {HorizontalSecondaryContent().map((content, index) => (
-              <div
-                key={index}
-                className="text-white py-1"
-                style={{ color: "#808080" }}
-              >
+              <div key={index} className="py-1 text-gray-500">
                 {content}
               </div>
             ))}

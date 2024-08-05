@@ -22,10 +22,10 @@
       - Open `http://localhost:3000` in your browser
 
 ## Desktop View
-![alt text](../netflix/src/assets/project-screentshots/image.png)
+![alt text](src/assets/project-screentshots/image.png)
 
 ## Mobile View
-![alt text](../netflix/src/assets/project-screentshots/image-1.png)
+![alt text](src/assets/project-screentshots/image-1.png)
 
 
 By: raf.dev

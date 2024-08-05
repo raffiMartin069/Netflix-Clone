@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import menuBtn from "../../assets/menu_light.png";
 import netflixLogo from "../../assets/netflix_nobg.png";
 import "../../styles/sidenav-animation.css";
@@ -6,6 +6,8 @@ import "../../styles/search-animation.css";
 
 const VerticalSecondaryContent = () => {
   return [
+    "Sign Out of Netflix",
+    "Help Center",
     "Home",
     "My List",
     "Thrillers",
@@ -37,10 +39,6 @@ const HorizontalContent = () => {
     "My List",
     "Browse by Languages",
   ];
-};
-
-const VerticalMainContent = () => {
-  return ["Help Center", "Sign Out of Netflix"];
 };
 
 function NavigationBar() {
@@ -190,32 +188,27 @@ function NavigationBar() {
                 </small>
               </div>
             </div>
-            {VerticalMainContent().map((content, index) => (
-              <div
-                key={index}
-                className={`${
-                  hoverText === index ? "text-white" : "text-gray-500"
-                } pt-1 flex`}
-              >
-                <div className={`${
-                  hoverText === index ? "bg-red-600 h-auto w-1" : "invisible w-1"
-                }`}></div>
-                <p className="px-5" onClick={() => handleTextHover(index)}>{content}</p>
-              </div>
-            ))}
-            <hr className="mt-5 text-gray-500" />
             {VerticalSecondaryContent().map((content, index) => (
-              <div
-                key={index}
-                className={`${
-                  hoverText === index ? "text-white" : "text-gray-500"
-                } pt-1 flex`}
-              >
-                <div className={`${
-                  hoverText === index ? "bg-red-600 h-auto w-1" : "invisible w-1"
-                }`}></div>
-                <p className="px-5" onClick={() => handleTextHover(index)}>{content}</p>
-              </div>
+              <React.Fragment key={index}>
+                <div
+                  key={index}
+                  className={`${
+                    hoverText === index ? "text-white" : "text-gray-500"
+                  } flex py-1`}
+                >
+                  <div
+                    className={`${
+                      hoverText === index
+                        ? "bg-red-600 h-auto w-1"
+                        : "invisible w-1"
+                    }`}
+                  ></div>
+                  <p className="px-5" onClick={() => handleTextHover(index)}>
+                    {content}
+                  </p>
+                </div>
+                {index === 1 && <hr className="mt-4"/>}
+              </React.Fragment>
             ))}
           </div>
         </div>

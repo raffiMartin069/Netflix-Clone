@@ -1,31 +1,31 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 # Netflix-Clone
+  This mini project uses Tailwind CSS, React JS and TypeScript using Vite as a build tool. It is a Netflix clone with a few features. It is a work in progress and I will be adding more features to it.
+
+## Goal
+    The goal of this project is to learn how to use Tailwind CSS, React JS and TypeScript together. I will be adding more features to it as I learn more about these technologies.
+
+## Features
+      - [x] Home Page
+      - [x] Navbar
+      - [x] Row
+  
+## Technologies Used
+      - [x] Tailwind CSS
+      - [x] React JS
+      - [x] TypeScript
+      - [x] Vite
+
+## How to run the project
+      - Clone the project
+      - Run `npm install`
+      - Run `npm run dev`
+      - Open `http://localhost:3000` in your browser
+
+## Desktop View
+![alt text](../netflix/src/assets/project-screentshots/image.png)
+
+## Mobile View
+![alt text](../netflix/src/assets/project-screentshots/image-1.png)
+
+
+By: raf.dev

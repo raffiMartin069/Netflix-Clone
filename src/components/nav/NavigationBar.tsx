@@ -151,8 +151,8 @@ function NavigationBar() {
           </div>
         </div>
         {/* Smaller size navigation bar starts here */}
-        <div className="relative lg:hidden">
-          <div className="bg-black pt-2 px-5">
+        <div className=" lg:hidden">
+          <div className="bg-black pt-2 px-5 block top-0 right-0 left-0">
             <ul className="flex h-20 justify-between items-center">
               <li>
                 <img src={menuBtn} className="h-7" onClick={changeState} />
@@ -177,7 +177,7 @@ function NavigationBar() {
           <div
             className={`${
               !toggle ? "slide-in" : "slide-out"
-            } absolute left-0 bg-black w-64 font-bold z-50`}
+            } fixed left-0 bg-black w-64 h-full overflow-y-auto font-bold z-50`}
           >
             <div className="flex gap-2 px-5" style={{ color: "#808080" }}>
               <div>

@@ -41,7 +41,6 @@ const HorizontalContent = () => {
   ];
 };
 
-// TODO: Pass the compoenent via props.
 function NavigationBar() {
   const [toggle, setToggle] = useState(true);
   const [hoverText, setHoverText] = useState<number | null>(null);
@@ -56,8 +55,8 @@ function NavigationBar() {
 
   return (
     <>
-      <nav className="fixed w-full bg-black z-50">
-        <div className="bg-black w-full pt-2 px-14 h-20  items-center hidden lg:flex">
+      <nav>
+        <div className="bg-black pt-2 px-14 h-20  items-center hidden lg:flex">
           <div>
             <a href="#">
               <img src={netflixLogo} className="h-12" />
@@ -76,38 +75,36 @@ function NavigationBar() {
           <div className="flex items-center ml-auto gap-5">
             <div className="text-white text-sm cursor-pointer ">
               <table className="table">
-                <thead>
-                  <tr>
-                    <td
+                <tr>
+                  <td
+                    className={`${
+                      !toggle ? "search-in block" : "search-out hidden"
+                    } px-3 relative border`}
+                  >
+                    <input
+                      type="search"
+                      placeholder="Titles, people, genres"
                       className={`${
-                        !toggle ? "search-in block" : "search-out hidden"
-                      } px-3 relative border`}
+                        toggle ? "search-out" : "search-in"
+                      } h-7 px-7 py-5 bg-black text-white focus:outline-none`}
+                    />
+                    <div
+                      className={`${
+                        !toggle ? "absolute" : "hidden"
+                      }  inset-y-0 start-0 p-2 text-white text-xl`}
                     >
-                      <input
-                        type="search"
-                        placeholder="Titles, people, genres"
-                        className={`${
-                          toggle ? "search-out" : "search-in"
-                        } h-7 px-7 py-5 bg-black text-white focus:outline-none`}
-                      />
-                      <div
-                        className={`${
-                          !toggle ? "absolute" : "hidden"
-                        }  inset-y-0 start-0 p-2 text-white text-xl`}
-                      >
-                        <i className="bi bi-search" onClick={changeState}></i>
-                      </div>
-                    </td>
-                    <td>
-                      <i
-                        className={`${
-                          toggle ? "block" : "hidden"
-                        } bi bi-search text-white text-xl`}
-                        onClick={changeState}
-                      ></i>
-                    </td>
-                  </tr>
-                </thead>
+                      <i className="bi bi-search" onClick={changeState}></i>
+                    </div>
+                  </td>
+                  <td>
+                    <i
+                      className={`${
+                        toggle ? "block" : "hidden"
+                      } bi bi-search text-white text-xl`}
+                      onClick={changeState}
+                    ></i>
+                  </td>
+                </tr>
               </table>
             </div>
             <div className="text-white text-sm">
@@ -151,8 +148,8 @@ function NavigationBar() {
           </div>
         </div>
         {/* Smaller size navigation bar starts here */}
-        <div className="lg:hidden w-full">
-          <div className="bg-black pt-2 px-5 block top-0 right-0 left-0">
+        <div className=" block lg:hidden">
+          <div className="bg-black pt-2 px-5">
             <ul className="flex h-20 justify-between items-center">
               <li>
                 <img src={menuBtn} className="h-7" onClick={changeState} />
@@ -177,7 +174,8 @@ function NavigationBar() {
           <div
             className={`${
               !toggle ? "slide-in" : "slide-out"
-            } fixed left-0 bg-black w-64 h-full overflow-y-auto font-bold z-40`}
+            } bg-black w-64 font-bold`}
+            style={{ height: "100dvh" }}
           >
             <div className="flex gap-2 px-5" style={{ color: "#808080" }}>
               <div>
@@ -209,7 +207,7 @@ function NavigationBar() {
                     {content}
                   </p>
                 </div>
-                {index === 1 && <hr className="mt-4" />}
+                {index === 1 && <hr className="mt-4"/>}
               </React.Fragment>
             ))}
           </div>

@@ -8,10 +8,12 @@ function Card() {
 
   return (
     <>
-      <NewOnNetflix/>
-      <PopularMovie/>
-      <TopRatedMovie/>
-      <UpcomingMovies/>
+      <div className="pt-16">
+        <NewOnNetflix/>
+        <PopularMovie/>
+        <TopRatedMovie/>
+        <UpcomingMovies/>
+      </div>
     </>
   );
 }

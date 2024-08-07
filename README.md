@@ -22,10 +22,15 @@
       - Open `http://localhost:3000` in your browser
 
 ## Desktop View
-![alt text](src/assets/project-screentshots/image.png)
+![alt text](/src/assets/project-screentshots/image.png)
 
 ## Mobile View
-![alt text](src/assets/project-screentshots/image-1.png)
+![alt text](/src/assets/project-screentshots/image-1.png)
 
+# Desktop Footer View
+![alt text](/src/assets/project-screentshots/image-2.png)
 
-By: raf.dev
+# Mobile Footer View
+![alt text](/src/assets/project-screentshots/image-3.png)
+
+By: raffa.dev

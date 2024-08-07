@@ -56,8 +56,8 @@ function NavigationBar() {
 
   return (
     <>
-      <nav className="relative">
-        <div className="bg-black pt-2 px-14 h-20  items-center hidden lg:flex">
+      <nav className="fixed w-full bg-black z-50">
+        <div className="bg-black w-full pt-2 px-14 h-20  items-center hidden lg:flex">
           <div>
             <a href="#">
               <img src={netflixLogo} className="h-12" />
@@ -151,7 +151,7 @@ function NavigationBar() {
           </div>
         </div>
         {/* Smaller size navigation bar starts here */}
-        <div className=" lg:hidden">
+        <div className="lg:hidden w-full">
           <div className="bg-black pt-2 px-5 block top-0 right-0 left-0">
             <ul className="flex h-20 justify-between items-center">
               <li>
@@ -177,7 +177,7 @@ function NavigationBar() {
           <div
             className={`${
               !toggle ? "slide-in" : "slide-out"
-            } fixed left-0 bg-black w-64 h-full overflow-y-auto font-bold z-50`}
+            } fixed left-0 bg-black w-64 h-full overflow-y-auto font-bold z-40`}
           >
             <div className="flex gap-2 px-5" style={{ color: "#808080" }}>
               <div>

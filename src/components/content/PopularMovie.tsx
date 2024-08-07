@@ -14,7 +14,6 @@ function PopularMovie() {
         const popularMoviesUrl =
           "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
         const result = await movieDataApiCall(popularMoviesUrl);
-        console.log(result);
         setPopularMovies(result.results);
       } catch (error) {
         console.log(error);

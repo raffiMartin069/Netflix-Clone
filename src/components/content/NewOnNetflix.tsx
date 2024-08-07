@@ -14,7 +14,6 @@ function NewOnNetflix() {
         const movieDataUrl =
           "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
         const result = await movieDataApiCall(movieDataUrl);
-        console.log(result);
         setMovies(result.results);
       } catch (e) {
         console.log(e);
